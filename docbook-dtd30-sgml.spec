@@ -31,7 +31,7 @@ tworzenia dokumentacji programistycznej. Ten pakiet zawiera wersjê 3.0
 DTD.
 
 %prep
-%setup -q -c %{SOURCE0}
+%setup -q -c
 chmod -R a+rX,g-w,o-w .
 cp %{SOURCE1} Makefile
 %patch0 -p0
