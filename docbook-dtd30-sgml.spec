@@ -1,8 +1,12 @@
 Summary:	SGML document type definition for DocBook 3.0
+Summary(es):	OASIS DTD DocBook Group para documentaciСn tИcnica
 Summary(pl):	DTD dla dokumentСw DocBook 3.0
+Summary(pt_BR):	DTD DocBook Davenport Group para documentaГЦo tИcnica
+Summary(ru):	SGML DTD для технической документации в формате DocBook 3.0
+Summary(uk):	SGML DTD для техн╕чно╖ документац╕╖ в формат╕ DocBook 3.0
 Name:		docbook-dtd30-sgml
 Version:	1.0
-Release:	16
+Release:	17
 License:	distributable
 Group:		Applications/Text
 Source0:	http://www.oasis-open.org/docbook/sgml/3.0/docbk30.zip
@@ -22,10 +26,28 @@ technical documentation texts (articles, books and manual pages). This
 syntax is SGML-compliant and is developed by the OASIS consortium.
 This is the version 3.0 of this DTD.
 
+%description -l es
+OASIS DTD DocBook para documentaciСn tИcnica.
+
 %description -l pl
 DocBook DTD jest zestawem definicji dokumentСw przeznaczonych do
 tworzenia dokumentacji programistycznej. Ten pakiet zawiera wersjЙ 3.0
 DTD.
+
+%description -l pt_BR
+DTD DocBook Davenport Group para documentaГЦo tИcnica.
+
+%description -l ru
+DocBook - это SGML DTD (document type definition) с описанием
+синтаксиса тегов в текстах технической документации (статьи, книги,
+man-страницы) Этот синтаксис является SGML-совместимым, его
+разработали в консорциуме OASIS. Это версия 3.0 этого DTD.
+
+%description -l uk
+DocBook - це SGML DTD (document type definition), що опису╓ синтаксис
+тег╕в в текстах техн╕чно╖ документац╕╖ (статт╕, книги, man-стор╕нки).
+Цей синтаксис ╓ SGML-сум╕сним, його розроблено в консорц╕ум╕ OASIS. Це
+верс╕я 3.0 цього DTD.
 
 %prep
 %setup -q -c
