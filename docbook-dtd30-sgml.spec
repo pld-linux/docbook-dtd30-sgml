@@ -5,9 +5,6 @@ Version:	1.0
 Release:	13
 License:	distributable
 Group:		Applications/Text
-Group(de):	Applikationen/Text
-Group(fr):	Utilitaires/Texte
-Group(pl):	Aplikacje/Tekst
 Source0:	http://www.oasis-open.org/docbook/sgml/3.0/docbk30.zip
 Source1:	%{name}-Makefile
 Patch0:		%{name}-catalog.patch
