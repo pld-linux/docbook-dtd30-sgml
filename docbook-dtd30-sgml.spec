@@ -31,7 +31,7 @@ This is the version 3.0 of this DTD.
 unzip %{SOURCE0}
 chmod -R a+rX,g-w,o-w .
 cp %{SOURCE1} Makefile
-patch -b docbook.cat $RPM_SOURCE_DIR/%{name}-catalog.patch
+%patch0 -p0
 
 %install
 rm -rf $RPM_BUILD_ROOT
