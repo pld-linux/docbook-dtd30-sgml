@@ -10,11 +10,10 @@ Source1:	%{name}-Makefile
 Patch0:		%{name}-catalog.patch
 URL:		http://www.oasis-open.org/docbook/
 BuildRequires:	unzip
+Requires(post,postun):	sgml-common >= 0.5
 Requires:	sgml-common >= 0.5
-Requires(post):	sgml-common >= 0.5
-Requires(postun):	sgml-common >= 0.5
-BuildArch:	noarch
 Provides:	docbook-dtd-sgml
+BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -42,11 +41,6 @@ rm -rf $RPM_BUILD_ROOT
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%files
-%defattr(644,root,root,755)
-%doc *.txt
-%{_datadir}/sgml/docbook/sgml-dtd-3.0
-
 %triggerpostun -- docbook-dtd30-sgml < 1.0-15
 if ! grep -q /etc/sgml/sgml-docbook-3.0.cat /etc/sgml/catalog ; then
 	/usr/bin/install-catalog --add /etc/sgml/sgml-docbook-3.0.cat /usr/share/sgml/docbook/sgml-dtd-3.0/catalog > /dev/null
@@ -61,3 +55,8 @@ fi
 if [ "$1" = "0" ] ; then
 	/usr/bin/install-catalog --remove /etc/sgml/sgml-docbook-3.0.cat /usr/share/sgml/docbook/sgml-dtd-3.0/catalog > /dev/null
 fi
+
+%files
+%defattr(644,root,root,755)
+%doc *.txt
+%{_datadir}/sgml/docbook/sgml-dtd-3.0
