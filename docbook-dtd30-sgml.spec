@@ -2,7 +2,7 @@ Summary:	SGML document type definition for DocBook 3.0
 Summary(pl):	DTD dla dokumentów DocBook 3.0
 Name:		docbook-dtd30-sgml
 Version:	1.0
-Release:	14
+Release:	15
 License:	distributable
 Group:		Applications/Text
 Source0:	http://www.oasis-open.org/docbook/sgml/3.0/docbk30.zip
@@ -10,7 +10,8 @@ Source1:	%{name}-Makefile
 Patch0:		%{name}-catalog.patch
 URL:		http://www.oasis-open.org/docbook/
 BuildRequires:	unzip
-Requires:	sgml-common >= 0.5
+BuildRequires:	sgml-common >= 0.5-9
+Requires:	sgml-common >= 0.5-9
 Requires(post):	sgml-common >= 0.5
 Requires(postun):	sgml-common >= 0.5
 Requires:	fileutils
@@ -30,8 +31,7 @@ tworzenia dokumentacji programistycznej. Ten pakiet zawiera wersjê 3.0
 DTD.
 
 %prep
-%setup -q -c -T
-unzip %{SOURCE0}
+%setup -q -c %{SOURCE0}
 chmod -R a+rX,g-w,o-w .
 cp %{SOURCE1} Makefile
 %patch0 -p0
@@ -41,6 +41,12 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__make} install DESTDIR=$RPM_BUILD_ROOT
 
+TMPFILE=`mktemp $(pwd)/tmpXXXXXX` || exit 1
+for ent in `find $RPM_BUILD_ROOT -type f` ; do
+	cp $ent $TMPFILE
+	sgml-iso-ent-fix < $TMPFILE > $ent
+done
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -49,40 +55,17 @@ rm -rf $RPM_BUILD_ROOT
 %doc *.txt
 %{_datadir}/sgml/docbook/sgml-dtd-3.0
 
-%post
-# Update the centralized catalog corresponding to this version of the DTD
-/usr/bin/install-catalog --add /etc/sgml/sgml-docbook-3.0.cat /usr/share/sgml/sgml-iso-entities-8879.1986/catalog > /dev/null
-/usr/bin/install-catalog --add /etc/sgml/sgml-docbook-3.0.cat /usr/share/sgml/docbook/sgml-dtd-3.0/catalog > /dev/null
-
-# The following lines are for the case in which the style sheets were
-# installed after another DTD but before this DTD
-STYLESHEETS=$(echo /usr/share/sgml/docbook/dsssl-stylesheets-*)
-STYLESHEETS=${STYLESHEETS##*/dsssl-stylesheets-}
-if [ "$STYLESHEETS" != "*" ]; then
-	/usr/bin/install-catalog --add /etc/sgml/sgml-docbook-3.0.cat /usr/share/OpenJade/catalog > /dev/null
-	/usr/bin/install-catalog --add /etc/sgml/sgml-docbook-3.0.cat /usr/share/sgml/docbook/dsssl-stylesheets-$STYLESHEETS/catalog > /dev/null
+%triggerpostun -- docbook-dtd30-sgml < 1.0-15
+if ! grep -q /etc/sgml/sgml-docbook-3.0.cat /etc/sgml/catalog ; then
+	/usr/bin/install-catalog --add /etc/sgml/sgml-docbook-3.0.cat /usr/share/sgml/docbook/sgml-dtd-3.0/catalog > /dev/null
 fi
 
-# Update the link to the current version of the DTD
-ln -sf /etc/sgml/sgml-docbook-3.0.cat /etc/sgml/sgml-docbook.cat
+%post
+if ! grep -q /etc/sgml/sgml-docbook-3.0.cat /etc/sgml/catalog ; then
+	/usr/bin/install-catalog --add /etc/sgml/sgml-docbook-3.0.cat /usr/share/sgml/docbook/sgml-dtd-3.0/catalog > /dev/null
+fi
 
 %postun
-# Update the centralized catalog corresponding to this version of the DTD
-/usr/bin/install-catalog --remove /etc/sgml/sgml-docbook-3.0.cat /usr/share/sgml/sgml-iso-entities-8879.1986/catalog > /dev/null
-/usr/bin/install-catalog --remove /etc/sgml/sgml-docbook-3.0.cat /usr/share/sgml/docbook/sgml-dtd-3.0/catalog > /dev/null
-
-# The following lines are for the case in which the style sheets were
-# not uninstalled because there is still another DTD
-STYLESHEETS=$(echo /usr/share/sgml/docbook/dsssl-stylesheets-*)
-STYLESHEETS=${STYLESHEETS##*/dsssl-stylesheets-}
-if [ "$STYLESHEETS" != "*" ]; then
-	/usr/bin/install-catalog --remove /etc/sgml/sgml-docbook-3.0.cat /usr/share/OpenJade/catalog > /dev/null
-	/usr/bin/install-catalog --remove /etc/sgml/sgml-docbook-3.0.cat /usr/share/sgml/docbook/dsssl-stylesheets-$STYLESHEETS/catalog > /dev/null
-fi
-
-# Update the link to the current version of the DTD
-if [ ! -e /etc/sgml/sgml-docbook-3.0.cat ]; then
-	rm -f /etc/sgml/sgml-docbook.cat
-	OTHERCAT=`ls /etc/sgml/sgml-docbook-?.?.cat 2> /dev/null | head --lines 1`
-	if [ -n "$OTHERCAT" ]; then ln -s $OTHERCAT /etc/sgml/sgml-docbook.cat; fi
+if [ "$1" = "0" ] ; then
+	/usr/bin/install-catalog --remove /etc/sgml/sgml-docbook-3.0.cat /usr/share/sgml/docbook/sgml-dtd-3.0/catalog > /dev/null
 fi
