@@ -3,7 +3,7 @@ Summary(pl):	DTD dla dokumentów DocBook 3.0
 Name:		docbook-dtd30-sgml
 Version:	1.0
 Release:	13
-License:	Distributable
+License:	distributable
 Group:		Applications/Text
 Group(de):	Applikationen/Text
 Group(pl):	Aplikacje/Tekst
