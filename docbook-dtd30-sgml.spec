@@ -11,7 +11,7 @@ Patch0:		%{name}-catalog.patch
 URL:		http://www.oasis-open.org/docbook/
 BuildRequires:	unzip
 Requires:	sgml-common >= 0.5
-Requires(post):		sgml-common >= 0.5
+Requires(post):	sgml-common >= 0.5
 Requires(postun):	sgml-common >= 0.5
 Requires:	fileutils
 BuildArch:	noarch
@@ -26,8 +26,8 @@ This is the version 3.0 of this DTD.
 
 %description -l pl
 DocBook DTD jest zestawem definicji dokumentów przeznaczonych do
-tworzenia dokumentacji programistycznej. Ten pakiet zawiera wersjê
-3.0 DTD.
+tworzenia dokumentacji programistycznej. Ten pakiet zawiera wersjê 3.0
+DTD.
 
 %prep
 %setup -q -c -T
