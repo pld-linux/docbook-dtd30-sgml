@@ -27,9 +27,6 @@ technical documentation texts (articles, books and manual pages). This
 syntax is SGML-compliant and is developed by the OASIS consortium.
 This is the version 3.0 of this DTD.
 
-%description -l es
-OASIS DTD DocBook para documentación técnica.
-
 %description -l pl
 DocBook DTD jest zestawem definicji dokumentów przeznaczonych do
 tworzenia dokumentacji programistycznej. Ten pakiet zawiera wersjê 3.0
