@@ -1,0 +1,10 @@
+DESTDIR =
+
+all: install
+
+install:
+	mkdir -p $(DESTDIR)/usr/share/sgml/docbook/sgml-dtd-3.0
+	install *.dcl $(DESTDIR)/usr/share/sgml/docbook/sgml-dtd-3.0
+	install docbook.cat $(DESTDIR)/usr/share/sgml/docbook/sgml-dtd-3.0/catalog
+	install *.dtd $(DESTDIR)/usr/share/sgml/docbook/sgml-dtd-3.0
+	install *.mod $(DESTDIR)/usr/share/sgml/docbook/sgml-dtd-3.0
