@@ -61,7 +61,7 @@ rm -rf $RPM_BUILD_ROOT
 STYLESHEETS=$(echo /usr/share/sgml/docbook/dsssl-stylesheets-*)
 STYLESHEETS=${STYLESHEETS##*/dsssl-stylesheets-}
 if [ "$STYLESHEETS" != "*" ]; then
-	/usr/bin/install-catalog --add /etc/sgml/sgml-docbook-3.0.cat /usr/share/sgml/openjade-1.3/catalog > /dev/null
+	/usr/bin/install-catalog --add /etc/sgml/sgml-docbook-3.0.cat /usr/share/sgml/openjade-1.4/catalog > /dev/null
 	/usr/bin/install-catalog --add /etc/sgml/sgml-docbook-3.0.cat /usr/share/sgml/docbook/dsssl-stylesheets-$STYLESHEETS/catalog > /dev/null
 fi
 
@@ -78,7 +78,7 @@ ln -sf /etc/sgml/sgml-docbook-3.0.cat /etc/sgml/sgml-docbook.cat
 STYLESHEETS=$(echo /usr/share/sgml/docbook/dsssl-stylesheets-*)
 STYLESHEETS=${STYLESHEETS##*/dsssl-stylesheets-}
 if [ "$STYLESHEETS" != "*" ]; then
-	/usr/bin/install-catalog --remove /etc/sgml/sgml-docbook-3.0.cat /usr/share/sgml/openjade-1.3/catalog > /dev/null
+	/usr/bin/install-catalog --remove /etc/sgml/sgml-docbook-3.0.cat /usr/share/sgml/openjade-1.4/catalog > /dev/null
 	/usr/bin/install-catalog --remove /etc/sgml/sgml-docbook-3.0.cat /usr/share/sgml/docbook/dsssl-stylesheets-$STYLESHEETS/catalog > /dev/null
 fi
 
