@@ -10,6 +10,7 @@ Release:	17
 License:	distributable
 Group:		Applications/Text
 Source0:	http://www.oasis-open.org/docbook/sgml/3.0/docbk30.zip
+# Source0-md5:	9a7f5b1b7dd52d0ca4fb080619f0459c
 Source1:	%{name}-Makefile
 Patch0:		%{name}-catalog.patch
 URL:		http://www.oasis-open.org/docbook/
