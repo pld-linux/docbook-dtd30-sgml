@@ -1,7 +1,7 @@
 Summary:	SGML document type definition for DocBook 3.0
 Name:		docbook-dtd30-sgml
 Version:	1.0
-Release:	11
+Release:	12
 License:	Distributable
 Group:		Applications/Text
 Group(de):	Applikationen/Text
