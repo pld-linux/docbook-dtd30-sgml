@@ -2,7 +2,7 @@ Summary:	SGML document type definition for DocBook 3.0
 Summary(pl):	DTD dla dokumentów DocBook 3.0
 Name:		docbook-dtd30-sgml
 Version:	1.0
-Release:	13
+Release:	14
 License:	distributable
 Group:		Applications/Text
 Source0:	http://www.oasis-open.org/docbook/sgml/3.0/docbk30.zip
@@ -41,14 +41,12 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__make} install DESTDIR=$RPM_BUILD_ROOT
 
-gzip -9nf *.txt
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc *.gz
+%doc *.txt
 %{_datadir}/sgml/docbook/sgml-dtd-3.0
 
 %post
@@ -61,7 +59,7 @@ rm -rf $RPM_BUILD_ROOT
 STYLESHEETS=$(echo /usr/share/sgml/docbook/dsssl-stylesheets-*)
 STYLESHEETS=${STYLESHEETS##*/dsssl-stylesheets-}
 if [ "$STYLESHEETS" != "*" ]; then
-	/usr/bin/install-catalog --add /etc/sgml/sgml-docbook-3.0.cat /usr/share/sgml/openjade-1.4/catalog > /dev/null
+	/usr/bin/install-catalog --add /etc/sgml/sgml-docbook-3.0.cat /usr/share/OpenJade/catalog > /dev/null
 	/usr/bin/install-catalog --add /etc/sgml/sgml-docbook-3.0.cat /usr/share/sgml/docbook/dsssl-stylesheets-$STYLESHEETS/catalog > /dev/null
 fi
 
@@ -78,7 +76,7 @@ ln -sf /etc/sgml/sgml-docbook-3.0.cat /etc/sgml/sgml-docbook.cat
 STYLESHEETS=$(echo /usr/share/sgml/docbook/dsssl-stylesheets-*)
 STYLESHEETS=${STYLESHEETS##*/dsssl-stylesheets-}
 if [ "$STYLESHEETS" != "*" ]; then
-	/usr/bin/install-catalog --remove /etc/sgml/sgml-docbook-3.0.cat /usr/share/sgml/openjade-1.4/catalog > /dev/null
+	/usr/bin/install-catalog --remove /etc/sgml/sgml-docbook-3.0.cat /usr/share/OpenJade/catalog > /dev/null
 	/usr/bin/install-catalog --remove /etc/sgml/sgml-docbook-3.0.cat /usr/share/sgml/docbook/dsssl-stylesheets-$STYLESHEETS/catalog > /dev/null
 fi
 
