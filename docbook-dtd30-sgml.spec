@@ -1,7 +1,8 @@
 Summary:	SGML document type definition for DocBook 3.0
+Summary(pl):	DTD dla dokumentów DocBook 3.0
 Name:		docbook-dtd30-sgml
 Version:	1.0
-Release:	12
+Release:	13
 License:	Distributable
 Group:		Applications/Text
 Group(de):	Applikationen/Text
@@ -25,6 +26,10 @@ technical documentation texts (articles, books and manual pages). This
 syntax is SGML-compliant and is developed by the OASIS consortium.
 This is the version 3.0 of this DTD.
 
+%description -l pl
+DocBook DTD jest zestawem definicji dokumentów przeznaczonych do
+tworzenia dokumentacji programistycznej. Ten pakiet zawiera wersjê
+3.0 DTD.
 
 %prep
 %setup -q -c -T
@@ -41,13 +46,12 @@ rm -rf $RPM_BUILD_ROOT
 gzip -9nf *.txt
 
 %clean
-rm -rf $DESTDIR
+rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
 %doc *.gz
 %{_datadir}/sgml/docbook/sgml-dtd-3.0
-
 
 %post
 # Update the centralized catalog corresponding to this version of the DTD
