@@ -2,7 +2,7 @@ Summary:	SGML document type definition for DocBook 3.0
 Summary(pl):	DTD dla dokumentów DocBook 3.0
 Name:		docbook-dtd30-sgml
 Version:	1.0
-Release:	15
+Release:	16
 License:	distributable
 Group:		Applications/Text
 Source0:	http://www.oasis-open.org/docbook/sgml/3.0/docbk30.zip
@@ -10,11 +10,9 @@ Source1:	%{name}-Makefile
 Patch0:		%{name}-catalog.patch
 URL:		http://www.oasis-open.org/docbook/
 BuildRequires:	unzip
-BuildRequires:	sgml-common >= 0.5-9
-Requires:	sgml-common >= 0.5-9
+Requires:	sgml-common >= 0.5
 Requires(post):	sgml-common >= 0.5
 Requires(postun):	sgml-common >= 0.5
-Requires:	fileutils
 BuildArch:	noarch
 Provides:	docbook-dtd-sgml
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -40,12 +38,6 @@ cp %{SOURCE1} Makefile
 rm -rf $RPM_BUILD_ROOT
 
 %{__make} install DESTDIR=$RPM_BUILD_ROOT
-
-TMPFILE=`mktemp $(pwd)/tmpXXXXXX` || exit 1
-for ent in `find $RPM_BUILD_ROOT -type f` ; do
-	cp $ent $TMPFILE
-	sgml-iso-ent-fix < $TMPFILE > $ent
-done
 
 %clean
 rm -rf $RPM_BUILD_ROOT
