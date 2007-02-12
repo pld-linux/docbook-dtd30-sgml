@@ -1,9 +1,9 @@
 Summary:	SGML document type definition for DocBook 3.0
-Summary(es.UTF-8):   OASIS DTD DocBook Group para documentación técnica
-Summary(pl.UTF-8):   DTD dla dokumentów DocBook 3.0
-Summary(pt_BR.UTF-8):   DTD DocBook Davenport Group para documentação técnica
-Summary(ru.UTF-8):   SGML DTD для технической документации в формате DocBook 3.0
-Summary(uk.UTF-8):   SGML DTD для технічної документації в форматі DocBook 3.0
+Summary(es.UTF-8):	OASIS DTD DocBook Group para documentación técnica
+Summary(pl.UTF-8):	DTD dla dokumentów DocBook 3.0
+Summary(pt_BR.UTF-8):	DTD DocBook Davenport Group para documentação técnica
+Summary(ru.UTF-8):	SGML DTD для технической документации в формате DocBook 3.0
+Summary(uk.UTF-8):	SGML DTD для технічної документації в форматі DocBook 3.0
 Name:		docbook-dtd30-sgml
 Version:	1.0
 Release:	19
