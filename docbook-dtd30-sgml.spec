@@ -6,7 +6,7 @@ Summary(ru.UTF-8):	SGML DTD для технической документаци
 Summary(uk.UTF-8):	SGML DTD для технічної документації в форматі DocBook 3.0
 Name:		docbook-dtd30-sgml
 Version:	1.0
-Release:	19
+Release:	20
 License:	distributable
 Group:		Applications/Text
 Source0:	http://www.oasis-open.org/docbook/sgml/3.0/docbk30.zip
