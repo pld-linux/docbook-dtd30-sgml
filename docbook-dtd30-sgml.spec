@@ -51,7 +51,7 @@ DocBook - це SGML DTD (document type definition), що описує синта
 %setup -q -c
 chmod -R a+rX,g-w,o-w .
 cp %{SOURCE1} Makefile
-%patch0 -p0
+%patch -P0 -p0
 
 %install
 rm -rf $RPM_BUILD_ROOT
